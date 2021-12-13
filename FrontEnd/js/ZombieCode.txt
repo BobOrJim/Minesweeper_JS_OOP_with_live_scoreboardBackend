@@ -1,0 +1,131 @@
+
+
+ToDo:
+
+
+highScore listan
+
+//Vid behov kolla de 5 delarna i async grejen, så scoreboard blir callback?
+
+
+
+
+      <!--
+      <input type="button" value="initStopWatch" id="initStopWatch" >
+      <input type="button" value="start" id="start" >
+      <input type="button" value="stop" id="stop" >
+      <input type="button" value="reset" id="reset" >
+      <input type="button" value="duration" id="duration" >
+      -->
+
+
+
+
+
+
+//START TEST AREA
+/*
+document.getElementById("initStopWatch").addEventListener("click", initStopWatch)
+function initStopWatch(){
+    stopWatch = new StopWatch()
+    console.log("new stopwatch()")
+}
+
+document.getElementById("start").addEventListener("click", start)
+function start(){
+    stopWatch.start()
+}
+
+document.getElementById("stop").addEventListener("click", stop)
+function stop(){
+    stopWatch.stop()
+}
+
+document.getElementById("reset").addEventListener("click", reset)
+function reset(){
+    stopWatch.reset()
+}
+
+document.getElementById("duration").addEventListener("click", duration)
+function duration(){
+    let time = stopWatch.getDuration()
+    console.log(time)
+}
+*/
+//END TEST AREA
+
+
+
+
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+body {
+  margin: 0;
+  background-color: rgb(46, 28, 28);
+  display: flex, inline;
+  float: center;
+  align-items: center;
+  font-size: 3rem;
+  flex-direction: column;
+  color: white;
+}
+
+
+
+.title {
+  margin: 20px;
+}
+
+.subtext {
+  color: rgb(19, 15, 15);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.board {
+  display: inline-grid;
+  padding: 10px;
+  grid-template-columns: repeat(var(--size), 60px);
+  grid-template-rows: repeat(var(--size), 60px);
+  gap: 4px;
+  background-color: #777;
+}
+
+.board > * {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: 2px solid #BBB;
+  user-select: none;
+}
+
+
+
+.board > [data-status="hidden"] {
+  background-color: #BBB;
+  cursor: pointer;
+}
+
+.board > [data-status="mine"] {
+  background-color: red;
+}
+
+.board > [data-status="number"] {
+  background-color: none;
+}
+
+.board > [data-status="marked"] {
+  background-color: yellow;
+}
+
