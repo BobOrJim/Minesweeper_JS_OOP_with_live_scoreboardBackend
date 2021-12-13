@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Infrastructure
+namespace Shared.Interfaces
 {
     public interface IDataAccess
     {

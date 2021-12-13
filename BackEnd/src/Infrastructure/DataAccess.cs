@@ -7,8 +7,8 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using System.Collections.Generic;
-//using Shared.Model;
-//using Shared.Interfaces;
+using Shared.Interfaces;
+
 
 
 namespace Infrastructure
@@ -17,11 +17,11 @@ namespace Infrastructure
     {
 
         private IMongoDatabase _db;
-        private MongoClient _mongoClient;
+        private IMongoClient _mongoClient;
 
         public DataAccess()
         {
-            _mongoClient = new MongoClient();
+            _mongoClient = new MongoClient(); //connectionstring 
         }
 
 
