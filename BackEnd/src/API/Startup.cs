@@ -29,6 +29,8 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDataAccess, DataAccess>();
+            
+            SeedMongodb.Seed(new DataAccess());
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
