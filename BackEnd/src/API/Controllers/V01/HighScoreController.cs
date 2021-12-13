@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using Shared.Interfaces;
 using Shared.Models;
 using System;
@@ -15,25 +17,34 @@ namespace API.Controllers.V01
     public class HighScoreController : ControllerBase
     {
         private readonly IDataAccess _dataAccess;
+        private readonly IConfiguration _iConfig;
+        private readonly string databaseName;
+        private readonly string collectionName;
 
-        public HighScoreController(IDataAccess dataAccess)
+        public HighScoreController(IDataAccess dataAccess, IConfiguration iConfig)
         {
             _dataAccess = dataAccess;
+            _iConfig = iConfig;
+            databaseName = _iConfig.GetValue<string>("MyMongoDatabase:databaseName");
+            collectionName = _iConfig.GetValue<string>("MyMongoDatabase:collectionName");
         }
 
         [HttpGet]
-        public IEnumerable<HighScore> GetHighScoreList()
+        public async Task<IActionResult> GetHighScoreList()
         {
-            //string dbConn2 = configuration.GetValue<string>("MyMongoDatabase:databaseName");
-            //var a = _dataAccess.ReadAllDocuments<BsonDocument>(databaseName, collectionName));
-            return new List<HighScore>();
+            List<HighScore> allHighScores = new();
+            foreach (BsonDocument document in _dataAccess.ReadAllDocuments<BsonDocument>(databaseName, collectionName))
+            {
+                allHighScores.Add(BsonSerializer.Deserialize<HighScore>(document));
+            }
+            return Ok(allHighScores);
         }
 
         [HttpPost]
-        public void PostHighScore(HighScore highScore)
+        public async Task<IActionResult> PostHighScore([FromBody] HighScore highScore)
         {
+            _dataAccess.CreateDocument(databaseName, collectionName, highScore);
+            return Ok();
         }
-
-
     }
 }
