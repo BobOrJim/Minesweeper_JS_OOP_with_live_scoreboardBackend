@@ -1,13 +1,9 @@
 
 Minesweeper in vanilla JS with OOP. (Done)
 
+Backend is C# with mongoDB. (Done)
+
 HighScore list with liveupdates. (in progress)
 
-Backend is C# with mongoDB. (in progress)
 
 Deploy (todo)
-
-My first JS project. The square object should probably be represented as simple datatypes inside a div.dataset, among many other possible improvements :)
-
-
-
