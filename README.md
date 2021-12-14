@@ -3,7 +3,6 @@ Minesweeper in vanilla JS with OOP. (Done)
 
 Backend is C# with mongoDB. (Done)
 
-HighScore list with liveupdates. (in progress)
-
+HighScore list with liveupdates. (Done)
 
 Deploy (todo)
