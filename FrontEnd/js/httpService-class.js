@@ -28,11 +28,12 @@ export class HttpService{
     }
 
     recieve(){
-        fetch('https://localhost:44338/api/HighScore')
+        console.log("recieve in httpservice")
+        fetch('https://minesweeper2021.azurewebsites.net/api/HighScore')
         .then( (result) => result.json())
         .then( (data) => this.dataFromBackend = data)
         .catch(error => console.log("NETWORK ERROR, CANT CONNECT TO BACKEND"))
-        console.log(this.dataFromBackend);
+        //console.log(this.dataFromBackend);
     }
 }
 

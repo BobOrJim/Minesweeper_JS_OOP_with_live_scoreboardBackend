@@ -1,17 +1,18 @@
 
 
 .wrapper {
-  width: 720px;
-  height: 720px;
+  width: 500px;
+  height: 500px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   /* background-color: rgb(81, 255, 0); */ 
-  border: 5px solid #BBB;
+
+  border: 1px solid #BBB;
 }
 
 .square{
-  width: 50px; 
-  height: 50px;
+  width: 30px; 
+  height: 30px;
   border: 3px solid #BBB;
   text-align: center;
   
@@ -40,10 +41,14 @@ body {
   display: flex, inline;
   float: center;
   align-items: center;
-  font-size: 3rem;
+  font-size: 2rem;
   flex-direction: column;
   color: white;
 }
 
-
+table, th, td {
+  font-size: 1.5rem;
+  color: rgb(60, 10, 126);
+  border: 1px solid #BBB;
+}
 

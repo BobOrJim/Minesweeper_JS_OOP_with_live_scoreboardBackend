@@ -20,7 +20,8 @@ function init() {
     let board = new Board(BOARD_SIZE, NUMBER_OF_MINES)
     let stopWatch = new StopWatch()
     let gameEngine = new GameEngine(board, stopWatch)
-    let presentation = new Presentation(gameEngine);
+    let presentation = new Presentation(gameEngine, httpService);
+
     presentation.render()
     presentation.addEventListners()
 }
@@ -28,16 +29,12 @@ function init() {
 
 document.getElementById("send").addEventListener("click", send)
 function send(){
-    //console.log("send in startup")
     httpService.send()
 }
 
 document.getElementById("recieve").addEventListener("click", recieve)
 function recieve(){
-    //console.log("recieve in startup")
-
     httpService.recieve()
-
 }
 
 
