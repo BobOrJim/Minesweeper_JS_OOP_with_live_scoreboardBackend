@@ -1,8 +1,11 @@
+We are live :)
 
-Minesweeper in vanilla JS with OOP. (Done)
+https://calm-stone-0597f2a03.azurestaticapps.net/
 
-Backend is C# with mongoDB. (Done)
+
+
+Minesweeper in vanilla JS with OOP (frontend). (Done)
+
+C# backend with mongoDB. (Done)
 
 HighScore list with liveupdates. (Done)
-
-Deploy (todo)
