@@ -1,8 +1,7 @@
 
 
 
-1: Seed
 
-2: connectionstring storage
 
+2: connectionstring safe storage
 

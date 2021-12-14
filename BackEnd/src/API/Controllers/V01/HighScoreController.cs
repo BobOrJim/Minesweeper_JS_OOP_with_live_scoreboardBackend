@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using Shared.Interfaces;
 using Shared.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Controllers.V01
@@ -41,10 +38,11 @@ namespace API.Controllers.V01
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostHighScore([FromBody] HighScore highScore)
+        public async Task<IActionResult> PostHighScore([FromBody] HighScore highScore) //Note, GUID will be generated, and does not need to included of http body.
         {
             _dataAccess.CreateDocument(databaseName, collectionName, highScore);
             return Ok();
         }
     }
 }
+

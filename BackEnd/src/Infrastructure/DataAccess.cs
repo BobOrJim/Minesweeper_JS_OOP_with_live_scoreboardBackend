@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
-using System.Collections.Generic;
 using Shared.Interfaces;
 
 
@@ -21,7 +20,14 @@ namespace Infrastructure
 
         public DataAccess()
         {
-            _mongoClient = new MongoClient(); //connectionstring 
+            //connection to Jason:
+            //digitalarkitekt.2rw7a.mongodb.net
+            //AUTH MODE: "SCRAM-SHA-1"
+            //USER: jasonwhetton
+            //PASS: nhq_gwy1etz0VUT3xbh
+
+            string connectionString = "mongodb+srv://jasonwhetton:nhq_gwy1etz0VUT3xbh@digitalarkitekt.2rw7a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+            _mongoClient = new MongoClient(connectionString); //connectionstring 
         }
 
 
