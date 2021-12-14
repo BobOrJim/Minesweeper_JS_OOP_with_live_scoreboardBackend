@@ -25,47 +25,6 @@ export class Presentation{
     this.minesLeft()
   }
 
-  scoreBoard(){
-    let scoreBoardTable = document.getElementById("scoreBoard")
-
-    // Create an empty <tr> element and add it to the 1st position of the table:
-    let row = scoreBoardTable.insertRow(0);
-
-    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    let positionCell = row.insertCell(0);
-    let nameCell = row.insertCell(1);
-    let timeCell = row.insertCell(1);
-
-    // Add some text to the new cells:
-    cell1.innerHTML = "NEW CELL1";
-    cell2.innerHTML = "NEW CELL2";
-    cell2.innerHTML = "NEW CELL2";
-
-    
-    //scoreBoardDiv.innerHTML += "haloj"
-    //this.httpService.recieve()
-    console.log(this.httpService.dataFromBackend)
-    //minesLeftDiv.innerHTML = `Mines left: ${mines - markCounter}`
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   addEventListners(){
     let squares = document.querySelectorAll(".square")
@@ -110,12 +69,52 @@ export class Presentation{
     minesLeftDiv.innerHTML = `Mines left: ${mines - markCounter}`  
   }
 
+
+  scoreBoard(){ //requesting data from backend, and updating the scoreBoard
+    this.httpService.recieve()
+    let scoreBoardData = this.httpService.dataFromBackend
+    let scoreBoardTable = document.getElementById("scoreBoard")
+    this.clearTable(scoreBoardTable)
+    if (!(scoreBoardData == undefined)){
+      scoreBoardData.sort((a, b) => a.time - b.time)
+      scoreBoardData = scoreBoardData.slice(0, 10);
+      scoreBoardData.reverse()
+      for (let i=0; i < Math.min(scoreBoardData.length, 10); i++ ){
+        this.addRowToScoreBoard(scoreBoardData.length - i, scoreBoardData[i].name, scoreBoardData[i].time)
+      }
+    }
+  }
+
+  clearTable(table) {
+    var rows = table.rows;
+    var i = rows.length;
+    while (--i) {
+      rows[i].parentNode.removeChild(rows[i]);
+    }
+  }
+
+  addRowToScoreBoard(position, name, time){
+    let scoreBoardTable = document.getElementById("scoreBoard")
+    let row = scoreBoardTable.insertRow(1);
+
+    // Insert new cells (<td>)  in row above
+    let positionCell = row.insertCell(0);
+    let nameCell = row.insertCell(1);
+    let timeCell = row.insertCell(2);
+
+    // Add some text to the new cells:
+    positionCell.innerHTML = position
+    nameCell.innerHTML = name
+    timeCell.innerHTML = time
+  }
+
+
   timePassed(){
     let timePassedDiv = document.getElementById("timePassed")
     timePassedDiv.innerHTML = this.gameEngine.stopWatch.getDuration()
   }
 
-
+  
   //setInterval didnt do the trick when calling this.timePassed(). Problems with scope i think.
   //So i had to do a workaround with async/await. Where the setIntervall is just a dummy.
   asyncPerpetualTimer100ms = async () => {
@@ -129,8 +128,4 @@ export class Presentation{
     this.asyncPerpetualTimer1000ms()
   }
 
-
-
 }
-
-

@@ -7,7 +7,7 @@ import { HttpService } from './httpService-class.js'
 
 
 const BOARD_SIZE = 10
-const NUMBER_OF_MINES = 1
+const NUMBER_OF_MINES = 13
 const httpService = new HttpService()
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function init() {
     let board = new Board(BOARD_SIZE, NUMBER_OF_MINES)
     let stopWatch = new StopWatch()
-    let gameEngine = new GameEngine(board, stopWatch)
+    let gameEngine = new GameEngine(board, stopWatch, httpService)
     let presentation = new Presentation(gameEngine, httpService);
 
     presentation.render()
@@ -38,8 +38,3 @@ function recieve(){
 }
 
 
-
-//göra klass för highScore
-//namn på class = highScoreService-class
-
-//Vid behov kolla de 5 delarna i async grejen, så scoreboard blir automatisk.

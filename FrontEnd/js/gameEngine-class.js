@@ -1,8 +1,9 @@
 
 export class GameEngine{
-    constructor(board, stopWatch) {
+    constructor(board, stopWatch, httpService) {
         this.board = board
         this.stopWatch = stopWatch
+        this.httpService = httpService
         this.gameIsEnded
     }
 
@@ -77,6 +78,7 @@ export class GameEngine{
         this.stopWatch.stop()
         let myTime = this.stopWatch.getDuration()
         const playerName = prompt(`Victory. Your time is ${myTime}. Please enter your name`);
+        this.httpService.send(playerName, myTime)
     }
 
 }
