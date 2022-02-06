@@ -1,7 +1,3 @@
-We are live :)
-
-https://calm-stone-0597f2a03.azurestaticapps.net/
-
 
 
 Minesweeper in vanilla JS with OOP (frontend). (Done)
